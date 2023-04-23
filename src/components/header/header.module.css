@@ -1,0 +1,141 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.header {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.out {
+    position: relative;
+    height: 2em;
+    width: 8.1em;
+    background: #FFCA0D;
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 1.15;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: all 500ms ease;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn .3s;
+    opacity: 0;
+}
+
+.out:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 1s ease;
+}
+
+.out:hover::before {
+    width: 100%;
+}
+
+.out svg {
+    height: 70%;
+    vertical-align: middle;
+}
+
+.eye {
+    margin-left: 38%;
+    margin-bottom: -4%;
+    display: flex;
+    justify-items: right;
+}
+
+.eyeBtn {
+    height: 5em;
+    align-self: end;
+    width: 4em;
+    border-radius: 40%;
+    background:transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.yesBtn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 1s ease;
+}
+
+.yesBtn:hover::before {
+    width: 100%;
+}
+
+.modal {
+    background: rgba(0, 0, 0, 0.50);
+    border: 0.5em solid rgb(255 202 3 / 30%);
+    box-shadow: 0px 0.75em 2.5em rgba(255, 205, 26, 0.4);
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeIn .3s;
+    font-size: .7em;
+}
+
+.content {
+    line-height: 1.5;
+    text-align: center;
+    color: #FFCA0D;
+    margin: 2em 0;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.yesBtn {
+    position: relative;
+    height: 2em;
+    width: 8.1em;
+    background: #FFCA0D;
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 1.15;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: all 500ms ease;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width:992px) {
+    .eye{
+        display: none;
+    }
+}

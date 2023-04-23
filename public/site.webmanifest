@@ -1,0 +1,14 @@
+{
+    "name": "RADUGA",
+    "short_name": "RADUGA",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#FFCA0D",
+    "background_color": "#FFCA0D",
+    "display": "standalone"
+}
