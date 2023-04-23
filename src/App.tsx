@@ -6,34 +6,16 @@ import Header from './components/header/header'
 import api from './api/api'
 import Dan from './components/dan/dan'
 import Prog from './components/prog/prog'
+import { DateObj, Dialogs } from './Types/types'
 // import Snowfall from 'react-snowfall'
 const Counter = React.lazy(() => import('./components/counter/counter'))
-type DialogsItem = {
-  head?: string,
-  quest?: string,
-  yesBtn: string,
-  noBtn?: string,
-  navYes?: string,
-  navNo?: string,
-  header?: string
-}
-type Dialogs = {
-  yurkoOne: DialogsItem,
-  yurkoTwo: DialogsItem,
-  yurkoThree: DialogsItem,
-  progOne: DialogsItem,
-  progTwo: DialogsItem,
-  danOne: DialogsItem,
-  danTwo: DialogsItem,
-  out: DialogsItem
-}
 const App: React.FC = () => {
   const [dialogs, setDialogs] = useState({} as Dialogs),
-    [katMass, setKatMass] = useState(() => [] as { mode: string, date: string }[]),
+    [katMass, setKatMass] = useState(() => [] as DateObj[]),
     [count, setCount] = useState(() => 0),
     [date, setDate] = useState(() => ''),
     [name, setName] = useState(() => ''),
-    setOpts = (dateObj: { mode: string, date: string }, RDate: string, name: string): void => {
+    setOpts = (dateObj: DateObj, RDate: string, name: string): void => {
       setKatMass(prev => prev.concat([dateObj]))
       setName(name)
       setCount(prev => prev + 1)
