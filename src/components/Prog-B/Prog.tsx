@@ -1,5 +1,5 @@
 import React from "react"
-import classes from './prog.module.css'
+import classes from './Prog.module.css'
 
 let Prog = () => {
     return(

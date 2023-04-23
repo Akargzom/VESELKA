@@ -1,5 +1,5 @@
 import React from "react"
-import classes from './dan.module.css'
+import classes from './Dan.module.css'
 let Dan = () => {
     return(
         <div>
