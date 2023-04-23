@@ -2,7 +2,7 @@ import axios from "axios";
 export const instance = axios.create({
     baseURL: 'https://raduga.anebopro.com/DB-TEST/php/backend.php',
 });
-const api = {
+const API = {
     setKat: async (kat: string) => {
         return await instance.post('/', JSON.stringify({ content: kat, post: 'kat' }))
     }
@@ -49,4 +49,4 @@ const api = {
         return await instance.get('/').then(r => r.data.dialogs)
     }
 }
-export default api
+export default API

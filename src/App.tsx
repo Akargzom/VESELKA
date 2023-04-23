@@ -2,14 +2,14 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
 import ModalDialog from './components/ModalDialog/ModalDialog'
-import Header from './components/header/header'
-import api from './api/api'
-import Dan from './components/dan/dan'
-import Prog from './components/prog/prog'
-import { DateObj, Dialogs } from './Types/types'
+import Prog from './components/Prog-B/Prog'
+import { DateObj, Dialogs } from './Types/Types'
+import API from './api/api'
+import Header from './components/Header/header'
+import Dan from './components/Dan-icq/dan'
 // import Snowfall from 'react-snowfall'
-const Counter = React.lazy(() => import('./components/counter/counter'))
-const App: React.FC = () => {
+const Counter = React.lazy(() => import('./components/Counter/counter')),
+App: React.FC = () => {
   const [dialogs, setDialogs] = useState({} as Dialogs),
     [katMass, setKatMass] = useState(() => [] as DateObj[]),
     [count, setCount] = useState(() => 0),
@@ -22,11 +22,11 @@ const App: React.FC = () => {
       setDate(RDate)
     }
   useEffect(() => {
-    api.fetchDialogs().then(r => setDialogs(r))
-    api.fetchRMass().then(r => { setKatMass(r) })
-    api.fetchRDate().then(r => setDate(r))
-    api.fetchRNum().then(r => setCount(r))
-    api.fetchRMode().then(r => r === 'R6' ? setName('Веселка') : setName('Каеска'))
+    API.fetchDialogs().then(r => setDialogs(r))
+    API.fetchRMass().then(r => { setKatMass(r) })
+    API.fetchRDate().then(r => setDate(r))
+    API.fetchRNum().then(r => setCount(r))
+    API.fetchRMode().then(r => r === 'R6' ? setName('Веселка') : setName('Каеска'))
   }, [])
   return (
     <div className="App">

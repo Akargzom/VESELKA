@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import api from "../../api/api"
 import moment from "moment"
 import 'moment-timezone'
 import classes from './counter.module.css'
 import vector from '../../assets/Vector.png'
-import { CounterProps} from "../../Types/types"
+import { CounterProps} from "../../Types/Types"
+import API from "../../api/api"
 let Counter: React.FC<CounterProps> = (props) => {
     moment.tz.add("Europe/Kiev|KMT EET MSK CEST CET MSD EEST|-22.4 -20 -30 -20 -10 -40 -30|0123434252525252525252525256161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161|-1Pc22.4 eUo2.4 rnz0 2Hg0 WM0 1fA0 da0 1v4m0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 Db0 3220 1cK0 1cL0 1cN0 1cL0 1cN0 1cL0 1cQ0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|34e5")
     const dateR = () => {
@@ -19,9 +19,9 @@ let Counter: React.FC<CounterProps> = (props) => {
                     date: RDate
                 },
                 name = mode === 'R6' ? 'Веселка' : 'Каеска'
-            api.SetRNum(props.count + 1).then(() => {
-                api.SetRDate(dateObj).then(() => {
-                    api.SetRMass(props.katMass.concat([dateObj])).then(() => {
+            API.SetRNum(props.count + 1).then(() => {
+                API.SetRDate(dateObj).then(() => {
+                    API.SetRMass(props.katMass.concat([dateObj])).then(() => {
                         props.setOpts(dateObj, RDate, name)
                     })
                 })
