@@ -1,18 +1,8 @@
 import React, { useState } from "react"
 import classes from "./ModalDialog.module.css"
 import { Link } from 'react-router-dom'
-type Props = {
-    dialogs: {
-        head?: string,
-        quest?: string,
-        yesBtn: string,
-        noBtn?: string,
-        navYes?: string,
-        navNo?: string,
-        header?: string
-    }
-}
-let ModalDialog: React.FC<Props> = ({ dialogs }) => {
+import { ModalProps } from "../../Types/types"
+let ModalDialog: React.FC<ModalProps> = ({ dialogs }) => {
     const [moadlStyle, setModalStyle] = useState({ display: 'block' })
     if (dialogs) {
         const styleHead = dialogs.head ? undefined : { display: 'none' },
