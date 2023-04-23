@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import classes from "./ModalDialog.module.css"
 import { Link } from 'react-router-dom'
-import { ModalProps } from "../../Types/Types"
+import { ModalProps } from "../../types/types"
 let ModalDialog: React.FC<ModalProps> = ({ dialogs }) => {
     const [moadlStyle, setModalStyle] = useState({ display: 'block' })
     if (dialogs) {

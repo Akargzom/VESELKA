@@ -3,12 +3,12 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
 import ModalDialog from './components/ModalDialog/ModalDialog'
 import Prog from './components/Prog-B/Prog'
-import { DateObj, Dialogs } from './Types/Types'
+import { DateObj, Dialogs } from './types/types'
 import API from './api/api'
-import Header from './components/Header/header'
-import Dan from './components/Dan-icq/dan'
+import Header from './components/Header/Header'
+import Dan from './components/Dan-icq/Dan'
 // import Snowfall from 'react-snowfall'
-const Counter = React.lazy(() => import('./components/Counter/counter')),
+const Counter = React.lazy(() => import('./components/Counter/Counter')),
 App: React.FC = () => {
   const [dialogs, setDialogs] = useState({} as Dialogs),
     [katMass, setKatMass] = useState(() => [] as DateObj[]),
