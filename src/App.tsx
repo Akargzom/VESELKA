@@ -8,7 +8,7 @@ import Dan from './components/dan/dan'
 import Prog from './components/prog/prog'
 // import Snowfall from 'react-snowfall'
 const Counter = React.lazy(() => import('./components/counter/counter'))
-type Props = {
+type DialogsItem = {
   head?: string,
   quest?: string,
   yesBtn: string,
@@ -18,14 +18,14 @@ type Props = {
   header?: string
 }
 type Dialogs = {
-  yurkoOne: Props,
-  yurkoTwo: Props,
-  yurkoThree: Props,
-  progOne: Props,
-  progTwo: Props,
-  danOne: Props,
-  danTwo: Props,
-  out: Props
+  yurkoOne: DialogsItem,
+  yurkoTwo: DialogsItem,
+  yurkoThree: DialogsItem,
+  progOne: DialogsItem,
+  progTwo: DialogsItem,
+  danOne: DialogsItem,
+  danTwo: DialogsItem,
+  out: DialogsItem
 }
 const App: React.FC = () => {
   const [dialogs, setDialogs] = useState({} as Dialogs),
