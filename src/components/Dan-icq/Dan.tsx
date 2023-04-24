@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react"
 import classes from './Dan.module.css'
 let Dan:React.FC = () => {
-    const [RCount, setRCount] = useState(0),
+    let [RCount, setRCount] = useState(0),
         [WPCount, setWPCount] = useState(0),
         [fuz, setFuz] = useState(1),
         [icq, setIcq] = useState(''),
-        onRCChanched = (e: any) => {
-            setRCount(e.currentTarget.value)
+        onRCChanched = (e: React.ChangeEvent<HTMLInputElement>) => {
+            setRCount(parseInt(e.currentTarget.value))
         },
-        onWPChanched = (e: any) => {
-            setWPCount(e.currentTarget.value)
+        onWPChanched = (e: React.ChangeEvent<HTMLInputElement>) => {
+            setWPCount(parseInt(e.currentTarget.value))
         },
-        onFuzChanged = (e: any) => {
-            setFuz(e.currentTarget.value)
+        onFuzChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
+            setFuz(parseInt(e.currentTarget.value))
         }
     useEffect(() => {
         setIcq('' + WPCount * RCount * fuz * 10)
