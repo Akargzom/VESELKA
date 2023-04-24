@@ -10,7 +10,7 @@
 
 .icq{
     position: absolute;
-    top: 50%;
+    top: 46%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     width: 25em;
