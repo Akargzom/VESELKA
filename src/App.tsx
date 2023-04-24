@@ -52,7 +52,6 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
         }
       },
       setWhenBprop = (whenB: string) => {
-        API.SetWhenB(whenB)
         console.log(whenB)
       }
     useEffect(() => {
