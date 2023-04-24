@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeIn .3s;
+    animation: fadeIn .8s;
     opacity: 0;
 }
 
