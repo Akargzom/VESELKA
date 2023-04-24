@@ -48,4 +48,5 @@ export type ProgProps = {
     prg: string,
     setKataMass: () => void,
     setSkipka: (state:boolean) => void
+    setWhenB: (whenB:string) => void
 }
