@@ -37,5 +37,15 @@ export type CounterProps = {
     count: number,
     date: string,
     name: string,
-    setOpts: (dateObj: DateObj, RDate: string, mode: string) => void
+    setOpts: (dateObj: DateObj, RDate: string, mode: string) => void,
+    timezone: string
+}
+export type ProgProps = {
+    kat: string,
+    whenB: string,
+    skip: string,
+    timezone: string,
+    prg: string,
+    setKataMass: () => void,
+    setSkipka: (state:boolean) => void
 }
