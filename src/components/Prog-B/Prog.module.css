@@ -1,0 +1,155 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+.prog {
+    animation: fadeIn .8s;
+}
+.text {
+    margin-bottom: 2%;
+    font-weight: normal;
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 120%;
+    color: #FFCA0D;
+    text-shadow: 0px 0px 1.5em #FFCD1A;
+}
+
+button {
+    height: 2.5em;
+    background: #FFCA0D;
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 120%;
+    text-align: center;
+    color: #000000;
+    cursor: pointer;
+    border: none;
+    animation: fadeIn .4s;
+}
+
+.small {
+    height: 2em;
+    width: 8.45em;
+    font-size: 1em;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tabGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 95%;
+    margin: 1em auto
+}
+
+.tab {
+    position: relative;
+    width: 100%;
+    height: 15em;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(0, 0, 0, 0.50);
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-clip: padding-box;
+    border: 0.5em solid rgb(255 202 3 / 30%);
+    box-shadow: 0px 0.75em 2.5em rgba(255, 205, 26, 0.4);
+}
+
+.tab .text {
+    margin-top: 2em;
+}
+
+.selects {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab select {
+    margin-top: 1.5em;
+    margin-left: .75em;
+    margin-left: .75em;
+}
+
+@media (min-width:993px){
+    .prog {
+        margin-top: 12em;
+    }
+
+    .tabGroup {
+        width: 33.333%;
+    }
+
+    button {
+        width: 12em;
+    }
+
+    .selects {
+        width: 90%;
+    }
+}
+
+@media (max-width: 992px) {
+    html {
+        font-size: 3.1vw;
+    }
+
+    .prog {
+        margin-top: 3em;
+    }
+
+    .tabGroup {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    button {
+        width: 9em;
+    }
+
+    .tabs {
+        position: relative;
+    }
+
+    .tab {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateY(100%) translateX(-50%);
+    }
+
+    .selects {
+        width: 75%;
+    }
+}
+
+@media (max-width: 650px){
+    .prog {
+        margin-top: 10em;
+    }
+}
+
+@media (max-width: 450px){
+    .prog {
+        margin-top: 15em;
+    }
+}

@@ -2,22 +2,21 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
 import ModalDialog from './components/ModalDialog/ModalDialog'
-import { DateObj, Dialogs } from './types/types'
+import { AppDispatch } from './types/types'
 import API from './api/api'
 import Header from './components/Header/Header'
 import Dan from './components/Dan-icq/Dan'
 import prgrm1 from './assets/prgrm.png'
 import prgrm2 from './assets/prgrm_2.png'
 import prgrm3 from './assets/prgrm_3_fake.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { InitialCounter, ThunkType } from './redux/counterReducer'
+import { getDialogs } from './redux/selectors'
 // import Snowfall from 'react-snowfall'
 const Counter = React.lazy(() => import('./components/Counter/Counter'))
 const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
   App: React.FC = () => {
-    const [dialogs, setDialogs] = useState({} as Dialogs),
-      [katMass, setKatMass] = useState(() => [] as DateObj[]),
-      [count, setCount] = useState(() => 0),
-      [date, setDate] = useState(() => ''),
-      [name, setName] = useState(() => ''),
+    const dialogs = useSelector(getDialogs),
       [whenB, setWhenB] = useState(''),
       [skip, setSkip] = useState(''),
       [kat, setKat] = useState(''),
@@ -25,12 +24,6 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
       [timezone, setTimezone] = useState(''),
       [katarsis, setKatarsis] = useState([] as Array<string>),
       [skipidar, setSkipidar] = useState([] as Array<string>),
-      setOpts = (dateObj: DateObj, RDate: string, name: string): void => {
-        setKatMass(prev => prev.concat([dateObj]))
-        setName(name)
-        setCount(prev => prev + 1)
-        setDate(RDate)
-      },
       setKataMass = () => {
         let newKat = katarsis[Math.floor(Math.random() * katarsis.length)]
         API.setKat(newKat)
@@ -51,15 +44,12 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
           setSkip(newSkip)
         }
       },
+      dispatch:AppDispatch = useDispatch(),
       setWhenBprop = (whenB: string) => {
-        console.log(whenB)
+        API.SetWhenB(whenB)
+        setWhenB(whenB)
       }
     useEffect(() => {
-      API.fetchDialogs().then(r => setDialogs(r))
-      API.fetchRMass().then(r => { setKatMass(r) })
-      API.fetchRDate().then(r => setDate(r))
-      API.fetchRNum().then(r => setCount(r))
-      API.fetchRMode().then(r => r === 'R6' ? setName('Веселка') : setName('Каеска'))
       API.fetchKat().then(r => setKat(r))
       API.fetchSkip().then(r => setSkip(r))
       API.fetchWhenB().then(r => setWhenB(r))
@@ -67,7 +57,12 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
       API.fetchSkipidar().then(r => setSkipidar(r))
       API.fetchTimezone().then(r => setTimezone(r))
       API.fetchPrg().then(r => setPrg(r))
+      API.fetchWhenB().then(r => setWhenB(r))
+      dispatch(InitialCounter() as ThunkType)
     }, [])
+    useEffect(()=>{
+      API.fetchWhenB().then(r => setWhenB(r))
+    },[whenB])
     return (
       <div className="App">
         <Header />
@@ -83,9 +78,9 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
             <Route path="/out" element={<ModalDialog dialogs={dialogs.out} />} />
             <Route path="/isDan-1" element={<ModalDialog dialogs={dialogs.danOne} />} />
             <Route path="/isDan-2" element={<ModalDialog dialogs={dialogs.danTwo} />} />
-            <Route path="/counter" element={<Counter timezone={timezone} katMass={katMass} count={count} date={date} name={name} setOpts={setOpts} />} />
+            <Route path="/counter" element={<Counter />} />
             <Route path="/dan-icq" element={<Dan />} />
-            <Route path="/prog-b" element={<Prog setWhenB={setWhenBprop} prg={prg} setSkipka={setSkipka} setKataMass={setKataMass} timezone={timezone} whenB={whenB} kat={kat} skip={skip} />} />
+            <Route path="/prog-b" element={<Prog setWhenBProp={setWhenBprop} prg={prg} setSkipka={setSkipka} setKataMass={setKataMass} timezone={timezone} whenB={whenB} kat={kat} skip={skip} />} />
           </Routes>
         </Suspense>
       </div>

@@ -1,3 +1,7 @@
+import { ThunkDispatch } from "redux-thunk"
+import { AppStateType } from "../redux/store"
+import { AnyAction } from "redux"
+
 export type DialogsItem = {
     head?: string,
     quest?: string,
@@ -48,5 +52,6 @@ export type ProgProps = {
     prg: string,
     setKataMass: () => void,
     setSkipka: (state:boolean) => void
-    setWhenB: (whenB:string) => void
+    setWhenBProp: (whenB:string) => void
 }
+export type AppDispatch = ThunkDispatch<AppStateType, any, AnyAction>; 

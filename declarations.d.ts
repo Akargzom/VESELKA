@@ -10,3 +10,4 @@ declare module '*.css' {
   declare module 'react-router-dom' 
   declare module 'react-test-renderer'
   declare module  "axios"
+  declare module '@reduxjs/toolkit'

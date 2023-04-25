@@ -8,48 +8,39 @@
     }
 }
 
-.count{
+.count {
     margin: 0;
     height: fit-content;
-    font-family: 'Play', sans-serif;
-    font-style: normal;
     font-weight: normal;
     font-size: 1.8em;
     line-height: 100%;
     color: #FFCA0D;
     text-shadow: 0px 0px 1.5em #FFCD1A;
     text-align: center;
-    opacity: 1;
 }
 
-.date{
+.date {
     margin-top: 1.5em;
     margin-bottom: 1em;
-    font-family: 'Play', sans-serif;
-    font-style: normal;
     font-weight: normal;
     font-size: 1.2em;
     line-height: 100%;
     color: #FFCA0D;
     text-shadow: 0px 0px 1.5em #FFCD1A;
     text-align: center;
-    opacity: 1;
 }
 
-.button{
+.button {
     margin-top: 1rem;
     width: 12em;
     height: 2.7em;
     background: #FFCA0D;
-    font-family: 'Play', sans-serif;
-    font-style: normal;
     font-weight: bold;
     font-size: 1.1em;
     line-height: 120%;
     text-align: center;
     color: #000000;
     cursor: pointer;
-    opacity: 1;
     border: none;
     position: relative;
 }
@@ -69,21 +60,16 @@
     width: 100%;
 }
 
-.rainbow{
-    margin-right: 2em;
-}
-
-.wrap{
-    margin-top: 14em;
+.wrap {
     animation: fadeIn .8s;
 }
 
-.buttons{
+.buttons {
     margin: 0 auto;
     width: fit-content;
 }
 
-.dates{
+.dates {
     width: 17em;
     height: 2.5em;
     border: 0.5em solid rgb(255 202 3 / 30%);
@@ -102,7 +88,7 @@
     margin-top: 3em;
 }
 
-.dates ul{
+.dates ul {
     max-height: 0em;
     overflow: hidden;
     margin: 0;
@@ -112,27 +98,27 @@
     padding-left: 1.1em;
 }
 
-ul span{
+ul span {
     margin-right: 2em;
     text-align: right;
     display: inline-block;
     width: 2em;
 }
 
-.open ul{
+.open ul {
     max-height: 300em;
     padding-bottom: 2em;
-    
+
 }
 
-.dates img{
+.dates img {
     transition: all .4s;
     transform: rotate(0deg);
     width: 1em;
     height: auto;
 }
 
-.open img{
+.open img {
     transform: rotate(180deg);
 }
 
@@ -140,13 +126,49 @@ ul span{
     box-shadow: 0px 0.75rem 2.5rem rgba(255, 205, 26, 0.4);
 }
 
-.flex{
+.flex {
     display: flex;
     justify-content: space-between;
     height: fit-content;
     align-items: center;
     padding: 1em;
 }
-.flex *{
+
+.flex * {
     display: block;
+}
+
+@media (min-width: 993px) {
+    .rainbow {
+        margin-right: 2em;
+    }
+
+    .wrap {
+        margin-top: 14em;
+    }
+}
+
+@media (max-width: 992px) {
+    .button {
+        display: block;
+    }
+
+    html {
+        font-size: 3.2vw;
+    }
+
+    .rainbow {
+        margin-bottom: 2em;
+    }
+
+    .wrap {
+        margin-top: 7em;
+    }
+}
+
+
+@media (max-width: 650px) {
+    .wrap {
+        margin-top: 5em;
+    }
 }
