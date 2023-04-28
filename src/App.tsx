@@ -7,7 +7,7 @@ import Header from './components/Header/Header'
 import Dan from './components/Dan-icq/Dan'
 import { useDispatch, useSelector } from 'react-redux'
 import { InitialCounter } from './redux/counterReducer'
-import { getCounter, getDialogs } from './redux/selectors'
+import { getDialogs } from './redux/selectors'
 import { InitialProg } from './redux/progReducer'
 import moment from "moment"
 import Snowfall from 'react-snowfall'
