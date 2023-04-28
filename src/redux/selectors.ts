@@ -7,3 +7,7 @@ export const getCounter = (state: StateType) => {
 export const getDialogs = (state: StateType) => {
     return state.dialogsReducer
 }
+
+export const getProg = (state: StateType) => {
+    return state.progReducer
+}

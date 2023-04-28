@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import moment from "moment"
 import 'moment-timezone'
 import classes from './Counter.module.css'
@@ -8,7 +8,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { getCounter } from "../../redux/selectors"
 import { SetCounter, ThunkType} from "../../redux/counterReducer"
 let Counter: React.FC = () => {
-    let state = useSelector(getCounter)
+    let state = useSelector(getCounter),
+    [name, setName] = useState(''),
+    [date, setDate] = useState('')
     moment.tz.add(state.timezone)
     const dateR = () => {
         let actualDate = ("0" + moment().tz("Europe/Kiev").date()).slice(-2) + "-" + ("0" + (moment().tz("Europe/Kiev").month() + 1)).slice(-2) + "-" + moment().tz("Europe/Kiev").year() + " " + ("0" + moment().tz("Europe/Kiev").hours()).slice(-2) + ":" + ("0" + moment().tz("Europe/Kiev").minutes()).slice(-2)
@@ -24,12 +26,18 @@ let Counter: React.FC = () => {
                 },
                 count = (state.count + 1),
                 katMass = state.katMass.concat([dateObj])
-            dispatch(SetCounter(dateObj, count, katMass) as ThunkType)
+            dispatch(SetCounter(count, katMass) as ThunkType)
         }
+        useEffect(()=>{
+            if(state.katMass){
+                setName(state.katMass[state.katMass.length-1].mode === 'CSGO' ? 'Каеска' : "Веселка")
+                setDate(state.katMass[state.katMass.length-1].date)
+            }
+        },[state.katMass])
     return (
         <div className={classes.wrap}>
-            <h1 className={classes.count}>{state.name} в останній раз була {state.count}</h1>
-            <div className={classes.date}>И це було: {state.date}</div>
+            <h1 className={classes.count}>{name} в останній раз була {state.count}</h1>
+            <div className={classes.date}>И це було: {date}</div>
             <div className={classes.buttons}>
                 <button className={classes.button + ' ' + classes.rainbow} onClick={() => addGame('R6')}>Додати веселку</button>
                 <button className={classes.button} onClick={() => addGame('CSGO')}>Додати каеску</button>

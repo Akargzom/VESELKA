@@ -1,68 +1,24 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
 import ModalDialog from './components/ModalDialog/ModalDialog'
 import { AppDispatch } from './types/types'
-import API from './api/api'
 import Header from './components/Header/Header'
 import Dan from './components/Dan-icq/Dan'
-import prgrm1 from './assets/prgrm.png'
-import prgrm2 from './assets/prgrm_2.png'
-import prgrm3 from './assets/prgrm_3_fake.png'
 import { useDispatch, useSelector } from 'react-redux'
-import { InitialCounter, ThunkType } from './redux/counterReducer'
+import { InitialCounter } from './redux/counterReducer'
 import { getDialogs } from './redux/selectors'
+import { InitialProg } from './redux/progReducer'
+import Prog from './components/Prog-B/Prog'
 // import Snowfall from 'react-snowfall'
-const Counter = React.lazy(() => import('./components/Counter/Counter'))
-const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
+const Counter = React.lazy(() => import('./components/Counter/Counter')),
   App: React.FC = () => {
     const dialogs = useSelector(getDialogs),
-      [whenB, setWhenB] = useState(''),
-      [skip, setSkip] = useState(''),
-      [kat, setKat] = useState(''),
-      [prg, setPrg] = useState(''),
-      [timezone, setTimezone] = useState(''),
-      [katarsis, setKatarsis] = useState([] as Array<string>),
-      [skipidar, setSkipidar] = useState([] as Array<string>),
-      setKataMass = () => {
-        let newKat = katarsis[Math.floor(Math.random() * katarsis.length)]
-        API.setKat(newKat)
-        setKat(newKat)
-      },
-      setSkipka = (state: boolean) => {
-        if (state) {
-          let newSkip = skipidar[Math.floor(Math.random() * skipidar.length)]
-          API.setSkip(newSkip)
-          const prgrm_arr = [prgrm1, prgrm2, prgrm3]
-          let prgrm_png = prgrm_arr[Math.floor(Math.random() * prgrm_arr.length)]
-          API.SetPrg(prgrm_png)
-          setPrg(prgrm_png)
-          setSkip(newSkip)
-        } else {
-          let newSkip = ''
-          API.setSkip(newSkip)
-          setSkip(newSkip)
-        }
-      },
-      dispatch:AppDispatch = useDispatch(),
-      setWhenBprop = (whenB: string) => {
-        API.SetWhenB(whenB)
-        setWhenB(whenB)
-      }
+    dispatch:AppDispatch = useDispatch()
     useEffect(() => {
-      API.fetchKat().then(r => setKat(r))
-      API.fetchSkip().then(r => setSkip(r))
-      API.fetchWhenB().then(r => setWhenB(r))
-      API.fetchKatarsis().then(r => setKatarsis(r))
-      API.fetchSkipidar().then(r => setSkipidar(r))
-      API.fetchTimezone().then(r => setTimezone(r))
-      API.fetchPrg().then(r => setPrg(r))
-      API.fetchWhenB().then(r => setWhenB(r))
-      dispatch(InitialCounter() as ThunkType)
+      dispatch(InitialProg())
+      dispatch(InitialCounter())
     }, [])
-    useEffect(()=>{
-      API.fetchWhenB().then(r => setWhenB(r))
-    },[whenB])
     return (
       <div className="App">
         <Header />
@@ -80,7 +36,7 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
             <Route path="/isDan-2" element={<ModalDialog dialogs={dialogs.danTwo} />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/dan-icq" element={<Dan />} />
-            <Route path="/prog-b" element={<Prog setWhenBProp={setWhenBprop} prg={prg} setSkipka={setSkipka} setKataMass={setKataMass} timezone={timezone} whenB={whenB} kat={kat} skip={skip} />} />
+            <Route path="/prog-b" element={<Prog/>} />
           </Routes>
         </Suspense>
       </div>

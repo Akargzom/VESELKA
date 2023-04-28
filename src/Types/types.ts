@@ -36,22 +36,4 @@ export type DateObj = {
     mode: string, 
     date: string 
 }
-export type CounterProps = {
-    katMass: DateObj[],
-    count: number,
-    date: string,
-    name: string,
-    setOpts: (dateObj: DateObj, RDate: string, mode: string) => void,
-    timezone: string
-}
-export type ProgProps = {
-    kat: string,
-    whenB: string,
-    skip: string,
-    timezone: string,
-    prg: string,
-    setKataMass: () => void,
-    setSkipka: (state:boolean) => void
-    setWhenBProp: (whenB:string) => void
-}
 export type AppDispatch = ThunkDispatch<AppStateType, any, AnyAction>; 

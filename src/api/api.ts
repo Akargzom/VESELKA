@@ -15,14 +15,11 @@ const API = {
     SetRNum: async (rNum: number) => {
         return await instance.post('/', JSON.stringify({ content: rNum, post: 'rcount' }))
     }, 
-    SetRDate: async (rDate: { mode: string, date: string }) => {
-        return await instance.post('/', JSON.stringify({ content: rDate, post: 'lastr' }))
-    },
     SetRMass: async (mass: Array<{ mode: string, date: string }>) => {
         return await instance.post('/', JSON.stringify({ content: mass, post: 'rdates' }))
     },
-    SetPrg: async (prg: string) => {
-        return await instance.post('/', JSON.stringify({ content: prg, post: 'prg' }))
+    SetPrg: async (prgPng: string) => {
+        return await instance.post('/', JSON.stringify({ content: prgPng, post: 'prgPng' }))
     },
     fetchWhenB: async () => {
         return await instance.get('/').then(r => r.data.whenB)
@@ -33,12 +30,6 @@ const API = {
     fetchSkip: async () => {
         return await instance.get('/').then(r => r.data.skip)
     },
-    fetchRDate: async () => {
-        return await instance.get('/').then(r => r.data.lastr.date)
-    },
-    fetchRMode: async () => {
-        return await instance.get('/').then(r => r.data.lastr.mode)
-    },
     fetchRNum: async () => {
         return await instance.get('/').then(r => r.data.rcount)
     },
@@ -48,17 +39,8 @@ const API = {
     fetchDialogs: async () => {
         return await instance.get('/').then(r => r.data.dialogs)
     },
-    fetchSkipidar: async () => {
-        return await instance.get('/').then(r => r.data.skipidar)
-    },
-    fetchKatarsis: async () => {
-        return await instance.get('/').then(r => r.data.katarsis)
-    },
-    fetchTimezone: async () => {
-        return await instance.get('/').then(r => r.data.timezone)
-    },
     fetchPrg: async () => {
-        return await instance.get('/').then(r => r.data.prg)
+        return await instance.get('/').then(r => r.data.prgPng)
     }
 }
 export default API

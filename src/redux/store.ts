@@ -4,6 +4,7 @@ import { configureStore, Action, AnyAction } from '@reduxjs/toolkit'
 import counterReducer from "./counterReducer"
 import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore"
 import dialogsReducer from "./dialogsReducer"
+import progReducer from "./progReducer"
 type PropertiesType<T> = T extends {[key: string] : infer U} ? U : never
 export type InferActionsTypes<T extends {[key: string] : (...args: any[])=> any}> = ReturnType<PropertiesType<T>>
 export type AppStateType = ToolkitStore<any, AnyAction, [ThunkMiddleware<any, AnyAction>]>
@@ -11,7 +12,8 @@ export type BaseThunkType<A extends Action, R = Promise<void | "succes" | undefi
 export const store = configureStore({
     reducer: {
         counterReducer: counterReducer,
-        dialogsReducer: dialogsReducer
+        dialogsReducer: dialogsReducer,
+        progReducer: progReducer
     },
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunkMiddleware)
 });
