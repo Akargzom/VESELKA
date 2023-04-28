@@ -15,25 +15,25 @@ import Snowfall from 'react-snowfall'
 import def from './assets/image_1.jpg'
 import ng from './assets/image_new_year.jpg'
 const Counter = React.lazy(() => import('./components/Counter/Counter')),
-Prog = React.lazy(() => import('./components/Prog-B/Prog')),
+  Prog = React.lazy(() => import('./components/Prog-B/Prog')),
   App: React.FC = () => {
     const dialogs = useSelector(getDialogs),
-    dispatch:AppDispatch = useDispatch(),
-    timezone = useSelector(getCounter).timezone
+      dispatch: AppDispatch = useDispatch(),
+      timezone = useSelector(getCounter).timezone
     moment.tz.add(timezone)
     useEffect(() => {
       dispatch(InitialProg())
       dispatch(InitialCounter())
       if (moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day')) {
         document.body.style.backgroundImage = 'url(' + ng + ')'
-    } else {
+      } else {
         document.body.style.backgroundImage = 'url(' + def + ')'
-    }
+      }
     }, [])
     return (
       <div className="App">
         <Header />
-        {moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day') ? <Snowfall/> : ''}
+        {moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day') ? <Snowfall /> : ''}
         <Suspense>
           <Routes>
             <Route path="/*" element={<Navigate to="/isYurko-1" />} />
@@ -47,7 +47,7 @@ Prog = React.lazy(() => import('./components/Prog-B/Prog')),
             <Route path="/isDan-2" element={<ModalDialog dialogs={dialogs.danTwo} />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/dan-icq" element={<Dan />} />
-            <Route path="/prog-b" element={<Prog/>} />
+            <Route path="/prog-b" element={<Prog />} />
           </Routes>
         </Suspense>
       </div>
