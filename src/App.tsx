@@ -7,22 +7,33 @@ import Header from './components/Header/Header'
 import Dan from './components/Dan-icq/Dan'
 import { useDispatch, useSelector } from 'react-redux'
 import { InitialCounter } from './redux/counterReducer'
-import { getDialogs } from './redux/selectors'
+import { getCounter, getDialogs } from './redux/selectors'
 import { InitialProg } from './redux/progReducer'
-import Prog from './components/Prog-B/Prog'
-// import Snowfall from 'react-snowfall'
+import moment from "moment"
+import 'moment-timezone'
+import Snowfall from 'react-snowfall'
+import def from './assets/image_1.jpg'
+import ng from './assets/image_new_year.jpg'
 const Counter = React.lazy(() => import('./components/Counter/Counter')),
+Prog = React.lazy(() => import('./components/Prog-B/Prog')),
   App: React.FC = () => {
     const dialogs = useSelector(getDialogs),
-    dispatch:AppDispatch = useDispatch()
+    dispatch:AppDispatch = useDispatch(),
+    timezone = useSelector(getCounter).timezone
+    moment.tz.add(timezone)
     useEffect(() => {
       dispatch(InitialProg())
       dispatch(InitialCounter())
+      if (moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day')) {
+        document.body.style.backgroundImage = 'url(' + ng + ')'
+    } else {
+        document.body.style.backgroundImage = 'url(' + def + ')'
+    }
     }, [])
     return (
       <div className="App">
         <Header />
-        {/* <Snowfall/> */}
+        {moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day') ? <Snowfall/> : ''}
         <Suspense>
           <Routes>
             <Route path="/*" element={<Navigate to="/isYurko-1" />} />

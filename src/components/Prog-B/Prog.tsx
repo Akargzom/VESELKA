@@ -8,6 +8,7 @@ import { setKat, setPrgPng, setSkip, setWhenB } from "../../redux/progReducer"
 import { getCounter, getProg } from "../../redux/selectors"
 import cantWait from '../../assets/cant_wait_07.jpg'
 import def from '../../assets/image_1.jpg'
+import ng from '../../assets/image_new_year.jpg'
 const Timer: React.FC<{ whenB: string }> = ({ whenB }) => {
     const [hours, setHours] = useState(() => 0),
         [minutes, setMinutes] = useState(() => 0),
@@ -85,7 +86,11 @@ const Timer: React.FC<{ whenB: string }> = ({ whenB }) => {
                 document.body.style.backgroundImage = 'url(' + cantWait + ')'
             }
             return () => {
-                document.body.style.backgroundImage = 'url(' + def + ')'
+                if (moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day')) {
+                    document.body.style.backgroundImage = 'url(' + ng + ')'
+                } else {
+                    document.body.style.backgroundImage = 'url(' + def + ')'
+                }
             }
         }, [day])
         return (
