@@ -10,7 +10,6 @@ import { InitialCounter } from './redux/counterReducer'
 import { getCounter, getDialogs } from './redux/selectors'
 import { InitialProg } from './redux/progReducer'
 import moment from "moment"
-import 'moment-timezone'
 import Snowfall from 'react-snowfall'
 import def from './assets/image_1.jpg'
 import ng from './assets/image_new_year.jpg'
@@ -18,9 +17,7 @@ const Counter = React.lazy(() => import('./components/Counter/Counter')),
   Prog = React.lazy(() => import('./components/Prog-B/Prog')),
   App: React.FC = () => {
     const dialogs = useSelector(getDialogs),
-      dispatch: AppDispatch = useDispatch(),
-      timezone = useSelector(getCounter).timezone
-    moment.tz.add(timezone)
+      dispatch: AppDispatch = useDispatch()
     useEffect(() => {
       dispatch(InitialProg())
       dispatch(InitialCounter())
