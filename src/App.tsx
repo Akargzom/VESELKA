@@ -18,16 +18,16 @@ import addNotification, { Notifications } from 'react-push-notification'
 import icon from './assets/favicon-32x32.png'
 const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
   App: React.FC = () => {
-    const dispatch: AppDispatch = useDispatch()
-    const dialogs = useSelector(getDialogs)
+    const dispatch: AppDispatch = useDispatch(),
+    dialogs = useSelector(getDialogs)
     let kat = useSelector(getProg).kat,
-    whenB = useSelector(getProg).whenB
+      whenB = useSelector(getProg).whenB
     useEffect(() => {
       dispatch(InitialProg())
       dispatch(InitialCounter())
       requestKat().then(r => kat = r)
-      requestB().then((r) =>{
-        if(moment(r).diff(moment().tz("Europe/Kiev")) > 0){
+      requestB().then((r) => {
+        if (moment(r).diff(moment().tz("Europe/Kiev")) > 0) {
           addNotification({
             title: 'Прибуття на бе заплановано на ' + r,
             message: 'Сьогдні ми ' + kat,
@@ -50,7 +50,7 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
       }), 10000)
     }, [])
     useEffect(() => {
-      if(whenB && kat && moment(whenB).diff(moment().tz("Europe/Kiev")) > 0){
+      if (whenB && kat && moment(whenB).diff(moment().tz("Europe/Kiev")) > 0) {
         addNotification({
           title: 'Прибуття на бе заплановано на ' + whenB,
           message: 'Сьогдні ми ' + kat,
