@@ -74,6 +74,10 @@
     cursor: pointer;
 }
 
+.eyeBtn::before{
+    display: none;
+}
+
 .yesBtn:before {
     content: '';
     position: absolute;

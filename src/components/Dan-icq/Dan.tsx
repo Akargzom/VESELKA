@@ -5,17 +5,22 @@ let Dan:React.FC = () => {
         [WPCount, setWPCount] = useState(0),
         [fuz, setFuz] = useState(1),
         [icq, setIcq] = useState(''),
+        x,
         onRCChanched = (e: React.ChangeEvent<HTMLInputElement>) => {
             setRCount(parseInt(e.currentTarget.value))
         },
         onWPChanched = (e: React.ChangeEvent<HTMLInputElement>) => {
             setWPCount(parseInt(e.currentTarget.value))
         },
-        onFuzChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        onFuzChanged = (e: any) => {
             setFuz(parseInt(e.currentTarget.value))
         }
     useEffect(() => {
-        setIcq('' + WPCount * RCount * fuz * 10)
+        if(fuz === 1 || fuz === 10)
+        x = 10
+        else
+        x = 2.5
+        setIcq('' + WPCount * RCount * fuz * x)
     }, [WPCount, RCount, fuz])
     useEffect(() => {
         setIcq('')
@@ -34,11 +39,11 @@ let Dan:React.FC = () => {
             </div>
             <div className={classes.flex}><div className={classes.text}>Який сьогодні Фуз?</div>
                 <select onChange={onFuzChanged} value={fuz}>
-                    <option value="1">Який?</option>
-                    <option value="1.5">Норм</option>
-                    <option value="0.75">Не дуж</option>
-                    <option value="1.25">Пульс</option>
-                    <option value="10">Свиня з фсб</option>
+                    <option value='4'>Який?</option>
+                    <option value='6'>Норм</option>
+                    <option value='3'>Не дуж</option>
+                    <option value='5'>Пульс</option>
+                    <option value='10'>Свиня з фсб</option>
                 </select>
             </div>
             <div className={classes.flex}>

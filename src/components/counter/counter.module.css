@@ -12,7 +12,6 @@
     margin: 0;
     height: fit-content;
     font-weight: normal;
-    font-size: 1.8em;
     line-height: 100%;
     color: #FFCA0D;
     text-shadow: 0px 0px 1.5em #FFCD1A;
@@ -21,7 +20,6 @@
 
 .date {
     margin-top: 1.5em;
-    margin-bottom: 1em;
     font-weight: normal;
     font-size: 1.2em;
     line-height: 100%;
@@ -55,7 +53,6 @@
 }
 
 .dates {
-    width: 17em;
     height: 2.5em;
     border: 0.5em solid rgb(255 202 3 / 30%);
     background: rgba(0, 0, 0, 0.50);
@@ -124,12 +121,27 @@ ul span {
 }
 
 @media (min-width: 993px) {
+    .wrap {
+        margin-top: 14em;
+    }
+
     .rainbow {
         margin-right: 2em;
     }
 
-    .wrap {
-        margin-top: 14em;
+    .count {
+        margin: 0;
+        height: fit-content;
+        font-weight: normal;
+        font-size: 1.8em;
+        line-height: 100%;
+        color: #FFCA0D;
+        text-shadow: 0px 0px 1.5em #FFCD1A;
+        text-align: center;
+    }
+
+    .date {
+        margin-bottom: 1em;
     }
 
     .button:before {
@@ -142,19 +154,20 @@ ul span {
         background: rgba(255, 255, 255, 0.3);
         transition: all 1s ease;
     }
-    
+
     .button:hover::before {
         width: 100%;
     }
 }
 
 @media (max-width: 992px) {
-    .button {
-        display: block;
+
+    .wrap {
+        margin-top: 7em;
     }
 
-    html {
-        font-size: 3.2vw;
+    .button {
+        display: block;
     }
 
     .rainbow {
@@ -162,13 +175,45 @@ ul span {
     }
 
     .wrap {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 7em;
     }
 }
 
+@media (min-width: 651px) {
+    .dates {
+        width: 17em;
+    }
+}
 
 @media (max-width: 650px) {
+    .count {
+        font-size: 1.45em;
+    }
+
+    .date {
+        margin-bottom: 2em;
+    }
+
+    li {
+        font-size: .85em;
+    }
+
+    .dates {
+        width: 92.2%;
+    }
+}
+
+@media (max-width: 920px) and (min-width: 451px) {
     .wrap {
-        margin-top: 5em;
+        font-size: .7em;
+    }
+}
+
+@media (max-width: 450px){
+    .wrap {
+        font-size: .95em;
     }
 }

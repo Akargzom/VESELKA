@@ -96,7 +96,7 @@ button {
 
 @media (min-width:993px){
     .prog {
-        margin-top: 13em;
+        margin-top: 9em;
     }
 
     .tabGroup {
@@ -129,12 +129,9 @@ button {
 }
 
 @media (max-width: 992px) {
-    html {
-        font-size: 3.1vw;
-    }
-
     .prog {
-        margin-top: 3em;
+        margin-top: 7em;
+        font-size: .75em;
     }
 
     .tabGroup {
@@ -165,6 +162,11 @@ button {
 @media (max-width: 650px){
     .prog {
         margin-top: 10em;
+        font-size: .5em;
+    }
+
+    .tab select {
+        font-size: 1.2em;
     }
 }
 

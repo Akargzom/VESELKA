@@ -4,7 +4,7 @@ import { AppDispatch } from "../../types/types"
 import moment from "moment"
 import 'moment-timezone'
 import { useDispatch, useSelector } from "react-redux"
-import { setKat, setPrgPng, setSkip, setWhenB } from "../../redux/progReducer"
+import { InitialProg, actions, requestB, setKat, setPrgPng, setSkip, setWhenB } from "../../redux/progReducer"
 import { getCounter, getProg } from "../../redux/selectors"
 import cantWait from '../../assets/cant_wait_07.jpg'
 import def from '../../assets/image_1.jpg'
@@ -33,7 +33,7 @@ const Timer: React.FC<{ whenB: string }> = ({ whenB }) => {
     }, [whenB]);
     return (
         <div className={classes.timer}>
-            <h1 className={classes.text}>Прибуття на бе {seconds > 0 ? <span >очікується через: {addZero(hours)}:{addZero(minutes)}:{addZero(seconds)}</span> : <span>не очікується</span>}</h1>
+            <h1 className={classes.text}>Прибуття на бе {seconds >= 0 && minutes >= 0 && hours >= 0 ? <span >очікується через: {addZero(hours)}:{addZero(minutes)}:{addZero(seconds)}</span> : <span>не очікується</span>}</h1>
         </div>
     )
 },
@@ -81,6 +81,14 @@ const Timer: React.FC<{ whenB: string }> = ({ whenB }) => {
             setWhenIsOpen(!whenIsOpen)
             dispatch(setWhenB(whenBActual))
         }
+        useEffect(()=>{
+            dispatch(InitialProg())
+            setInterval(() => requestB().then((r) => {
+                if (r !== state.whenB) {
+                  dispatch(actions.setWhenB(r))
+                }
+              }), 10000)
+        },[])
         useEffect(() => {
             if (day === 1) {
                 document.body.style.backgroundImage = 'url(' + cantWait + ')'
