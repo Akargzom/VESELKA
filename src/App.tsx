@@ -8,61 +8,61 @@ import Dan from './components/Dan-icq/Dan'
 import { useDispatch, useSelector } from 'react-redux'
 import { InitialCounter } from './redux/counterReducer'
 import { getDialogs, getProg } from './redux/selectors'
-import { InitialProg } from './redux/progReducer'
+import { InitialProg, requestB, requestKat } from './redux/progReducer'
 import moment from "moment"
 import Snowfall from 'react-snowfall'
 import def from './assets/image_1.jpg'
 import ng from './assets/image_new_year.jpg'
 import Counter from './components/Counter/Counter'
-// import addNotification, { Notifications } from 'react-push-notification'
-// import icon from './assets/favicon-32x32.png'
+import addNotification, { Notifications } from 'react-push-notification'
+import icon from './assets/favicon-32x32.png'
 const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
   App: React.FC = () => {
     const dispatch: AppDispatch = useDispatch(),
     dialogs = useSelector(getDialogs)
-    let kat = useSelector(getProg).kat
-      // whenB = useSelector(getProg).whenB
+    let kat = useSelector(getProg).kat,
+      whenB = useSelector(getProg).whenB
     useEffect(() => {
       dispatch(InitialProg())
       dispatch(InitialCounter())
-      // requestKat().then(r => kat = r)
-      // requestB().then((r) => {
-      //   if (moment(r).diff(moment().tz("Europe/Kiev")) > 0) {
-      //     addNotification({
-      //       title: 'Прибуття на бе заплановано на ' + r,
-      //       message: 'Сьогдні ми ' + kat,
-      //       duration: 120000,
-      //       icon: icon,
-      //       native: true
-      //     })
-      //   }
-      // }
-      // )
+      requestKat().then(r => kat = r)
+      requestB().then((r) => {
+        if (moment(r).diff(moment().tz("Europe/Kiev")) > 0) {
+          addNotification({
+            title: 'Прибуття на бе заплановано на ' + r,
+            message: 'Сьогдні ми ' + kat,
+            duration: 120000,
+            icon: icon,
+            native: true
+          })
+        }
+      }
+      )
       if (moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day')) {
         document.body.style.backgroundImage = 'url(' + ng + ')'
       } else {
         document.body.style.backgroundImage = 'url(' + def + ')'
       }
-      // setInterval(async () => await requestB().then((r) => {
-      //   if (r !== whenB) {
-      //     whenB = r
-      //   }
-      // }), 10000)
+      setInterval(async () => await requestB().then((r) => {
+        if (r !== whenB) {
+          whenB = r
+        }
+      }), 10000)
     }, [])
-    // useEffect(() => {
-    //   if (whenB && kat && moment(whenB).diff(moment().tz("Europe/Kiev")) > 0) {
-    //     addNotification({
-    //       title: 'Прибуття на бе заплановано на ' + whenB,
-    //       message: 'Сьогдні ми ' + kat,
-    //       duration: 120000,
-    //       icon: icon,
-    //       native: true
-    //     })
-    //   }
-    // }, [whenB])
+    useEffect(() => {
+      if (whenB && kat && moment(whenB).diff(moment().tz("Europe/Kiev")) > 0) {
+        addNotification({
+          title: 'Прибуття на бе заплановано на ' + whenB,
+          message: 'Сьогдні ми ' + kat,
+          duration: 120000,
+          icon: icon,
+          native: true
+        })
+      }
+    }, [whenB])
     return (
       <div className="App">
-        {/* <Notifications /> */}
+        <Notifications />
         <Header />
         {moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day') ? <Snowfall /> : ''}
         <Suspense>
