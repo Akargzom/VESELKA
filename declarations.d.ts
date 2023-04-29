@@ -11,5 +11,3 @@ declare module '*.css' {
   declare module 'react-test-renderer'
   declare module  "axios"
   declare module '@reduxjs/toolkit'
-  declare module 'firebase/analytics'
-  declare module 'firebase/app'
