@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
 import ModalDialog from './components/ModalDialog/ModalDialog'
@@ -33,7 +33,7 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
             message: 'Сьогдні ми ' + kat,
             duration: 120000,
             icon: icon,
-            native: true // when using native, your OS will handle theming.
+            native: true
           })
         }
       }
@@ -54,10 +54,9 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
         addNotification({
           title: 'Прибуття на бе заплановано на ' + whenB,
           message: 'Сьогдні ми ' + kat,
-          theme: 'darkblue',
           duration: 120000,
           icon: icon,
-          native: true // when using native, your OS will handle theming.
+          native: true
         })
       }
     }, [whenB])
