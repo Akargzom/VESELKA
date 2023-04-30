@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/veselka/static/css/main.cdd4f7f4.css",
+    "main.js": "/veselka/static/js/main.93f22ecc.js",
+    "static/css/956.2054a329.chunk.css": "/veselka/static/css/956.2054a329.chunk.css",
+    "static/js/956.66028a73.chunk.js": "/veselka/static/js/956.66028a73.chunk.js",
+    "static/js/787.38a4ba02.chunk.js": "/veselka/static/js/787.38a4ba02.chunk.js",
+    "static/media/prgrm.png": "/veselka/static/media/prgrm.21c03c66c242ee490d16.png",
+    "static/media/image_new_year.jpg": "/veselka/static/media/image_new_year.d17e7cbe088084553f0d.jpg",
+    "static/media/prgrm_3_fake.png": "/veselka/static/media/prgrm_3_fake.37da9e7e02cbc3ee5340.png",
+    "static/media/prgrm_2.png": "/veselka/static/media/prgrm_2.968f51e49dd057ebdb0f.png",
+    "static/media/image_1.jpg": "/veselka/static/media/image_1.5cd4c89989cf611953e1.jpg",
+    "static/media/cant_wait_07.jpg": "/veselka/static/media/cant_wait_07.292b1ebdf9c3d4bac55c.jpg",
+    "index.html": "/veselka/index.html",
+    "main.cdd4f7f4.css.map": "/veselka/static/css/main.cdd4f7f4.css.map",
+    "main.93f22ecc.js.map": "/veselka/static/js/main.93f22ecc.js.map",
+    "956.2054a329.chunk.css.map": "/veselka/static/css/956.2054a329.chunk.css.map",
+    "956.66028a73.chunk.js.map": "/veselka/static/js/956.66028a73.chunk.js.map",
+    "787.38a4ba02.chunk.js.map": "/veselka/static/js/787.38a4ba02.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cdd4f7f4.css",
+    "static/js/main.93f22ecc.js"
+  ]
+}
