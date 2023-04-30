@@ -9,35 +9,8 @@ import { getCounter, getProg } from "../../redux/selectors"
 import cantWait from '../../assets/cant_wait_07.jpg'
 import def from '../../assets/image_1.jpg'
 import ng from '../../assets/image_new_year.jpg'
-const Timer: React.FC<{ whenB: string }> = ({ whenB }) => {
-    const [hours, setHours] = useState(() => 0),
-        [minutes, setMinutes] = useState(() => 0),
-        [seconds, setSeconds] = useState(() => 0),
-        addZero = (num: number): string | number => {
-            if (num <= 9) {
-                return '0' + num;
-            } else return num;
-        },
-        getTime = (whenB: string) => {
-            const time = moment(whenB).diff(moment().tz("Europe/Kiev"))
-            setHours(Math.floor((time / (1000 * 60 * 60))))
-            setMinutes(Math.floor(time / 1000 / 60 % 60))
-            setSeconds(Math.floor(time / 1000 % 60))
-        }
-    useEffect(() => {
-        getTime(whenB)
-    }, [])
-    useEffect(() => {
-        const interval = setInterval(() => getTime(whenB), 1000)
-        return () => clearInterval(interval)
-    }, [whenB]);
-    return (
-        <div className={classes.timer}>
-            <h1 className={classes.text}>Прибуття на бе {seconds >= 0 && minutes >= 0 && hours >= 0 ? <span >очікується через: {addZero(hours)}:{addZero(minutes)}:{addZero(seconds)}</span> : <span>не очікується</span>}</h1>
-        </div>
-    )
-},
-    Prog: React.FC = () => {
+import Timer from "./Timer"
+const Prog: React.FC = () => {
         const [katIsOpen, setKatIsOpen] = useState(false),
             [skipIsOpen, setSkipIsOpen] = useState(false),
             [whenIsOpen, setWhenIsOpen] = useState(false),
