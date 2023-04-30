@@ -80,11 +80,11 @@ export const setWhenB = (whenB: string): ThunkType => {
   }
 }
 
-export const requestB = async ():Promise<any> =>{
-  return await API.fetchWhenB()
-}
+ export const requestB = async ():Promise<any> =>{
+   return await API.fetchWhenB()
+ }
 
-export const requestKat = async ():Promise<any> =>{
-  return await API.fetchKat()
-}
+ export const requestKat = async ():Promise<any> =>{
+   return await API.fetchKat()
+ }
 export default progReducer

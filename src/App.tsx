@@ -7,8 +7,8 @@ import Header from './components/Header/Header'
 import Dan from './components/Dan-icq/Dan'
 import { useDispatch, useSelector } from 'react-redux'
 import { InitialCounter } from './redux/counterReducer'
-import { getDialogs, getProg } from './redux/selectors'
-import { InitialProg, requestB, requestKat } from './redux/progReducer'
+import { getDialogs, getProg} from './redux/selectors'
+import { InitialProg, requestB, requestKat} from './redux/progReducer'
 import moment from "moment"
 import Snowfall from 'react-snowfall'
 import def from './assets/image_1.jpg'
@@ -25,41 +25,41 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
     useEffect(() => {
       dispatch(InitialProg())
       dispatch(InitialCounter())
-      requestKat().then(r => kat = r)
-      requestB().then((r) => {
-        if (moment(r).diff(moment().tz("Europe/Kiev")) > 0) {
-          addNotification({
-            title: 'Прибуття на бе заплановано на ' + r,
-            message: 'Сьогдні ми ' + kat,
-            duration: 120000,
-            icon: icon,
-            native: true
-          })
-        }
-      }
-      )
+       requestKat().then(r => kat = r)
+       requestB().then((r) => {
+         if (moment(r).diff(moment().tz("Europe/Kiev")) > 0) {
+           addNotification({
+             title: 'Прибуття на бе заплановано на ' + r,
+             message: 'Сьогдні ми ' + kat,
+             duration: 120000,
+             icon: icon,
+             native: true
+           })
+         }
+       }
+       )
       if (moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day')) {
         document.body.style.backgroundImage = 'url(' + ng + ')'
       } else {
         document.body.style.backgroundImage = 'url(' + def + ')'
       }
-      setInterval(async () => await requestB().then((r) => {
-        if (r !== whenB) {
-          whenB = r
-        }
-      }), 10000)
+       setInterval(async () => await requestB().then((r) => {
+         if (r !== whenB) {
+           whenB = r
+         }
+       }), 10000)
     }, [])
-    useEffect(() => {
-      if (whenB && kat && moment(whenB).diff(moment().tz("Europe/Kiev")) > 0) {
-        addNotification({
-          title: 'Прибуття на бе заплановано на ' + whenB,
-          message: 'Сьогдні ми ' + kat,
-          duration: 120000,
-          icon: icon,
-          native: true
-        })
-      }
-    }, [whenB])
+     useEffect(() => {
+       if (whenB && kat && moment(whenB).diff(moment().tz("Europe/Kiev")) > 0) {
+         addNotification({
+           title: 'Прибуття на бе заплановано на ' + whenB,
+           message: 'Сьогдні ми ' + kat,
+           duration: 120000,
+           icon: icon,
+           native: true
+         })
+       }
+     }, [whenB])
     return (
       <div className="App">
         <Notifications />

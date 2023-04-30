@@ -6,7 +6,7 @@ import vector from '../../assets/Vector.png'
 import { AppDispatch, DateObj} from "../../types/types"
 import { useDispatch, useSelector } from "react-redux"
 import { getCounter } from "../../redux/selectors"
-import { SetCounter, ThunkType} from "../../redux/counterReducer"
+import { InitialCounter, SetCounter, ThunkType} from "../../redux/counterReducer"
 let Counter: React.FC = () => {
     let state = useSelector(getCounter),
     [name, setName] = useState(''),
@@ -29,10 +29,13 @@ let Counter: React.FC = () => {
             dispatch(SetCounter(count, katMass) as ThunkType)
         }
         useEffect(()=>{
-            if(state.katMass){
+            if(state.katMass.length){
                 setName(state.katMass[state.katMass.length-1].mode === 'CSGO' ? 'Каеска' : "Веселка")
                 setDate(state.katMass[state.katMass.length-1].date)
             }
+        },[state.katMass])
+        useEffect(()=>{
+            dispatch(InitialCounter)
         },[state.katMass])
     return (
         <div className={classes.wrap}>

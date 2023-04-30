@@ -1,6 +1,6 @@
 import axios from "axios";
 export const instance = axios.create({
-    baseURL: 'https://raduga.anebopro.com/DB-TEST/php/backend.php',
+    baseURL: 'https://raduga.anebopro.com/php/backend.php',
 });
 const API = {
     setKat: async (kat: string) => {
