@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/VESELKA/static/css/main.ef9329a5.css",
-    "main.js": "/VESELKA/static/js/main.7d8a1cb1.js",
-    "static/css/956.2054a329.chunk.css": "/VESELKA/static/css/956.2054a329.chunk.css",
-    "static/js/956.66028a73.chunk.js": "/VESELKA/static/js/956.66028a73.chunk.js",
+    "main.js": "/VESELKA/static/js/main.b9887708.js",
+    "static/css/602.18ba1cf3.chunk.css": "/VESELKA/static/css/602.18ba1cf3.chunk.css",
+    "static/js/602.3f5e9df9.chunk.js": "/VESELKA/static/js/602.3f5e9df9.chunk.js",
     "static/js/787.38a4ba02.chunk.js": "/VESELKA/static/js/787.38a4ba02.chunk.js",
     "static/media/prgrm.png": "/VESELKA/static/media/prgrm.21c03c66c242ee490d16.png",
     "static/media/image_new_year.jpg": "/VESELKA/static/media/image_new_year.d17e7cbe088084553f0d.jpg",
@@ -13,13 +13,13 @@
     "static/media/cant_wait_07.jpg": "/VESELKA/static/media/cant_wait_07.292b1ebdf9c3d4bac55c.jpg",
     "index.html": "/VESELKA/index.html",
     "main.ef9329a5.css.map": "/VESELKA/static/css/main.ef9329a5.css.map",
-    "main.7d8a1cb1.js.map": "/VESELKA/static/js/main.7d8a1cb1.js.map",
-    "956.2054a329.chunk.css.map": "/VESELKA/static/css/956.2054a329.chunk.css.map",
-    "956.66028a73.chunk.js.map": "/VESELKA/static/js/956.66028a73.chunk.js.map",
+    "main.b9887708.js.map": "/VESELKA/static/js/main.b9887708.js.map",
+    "602.18ba1cf3.chunk.css.map": "/VESELKA/static/css/602.18ba1cf3.chunk.css.map",
+    "602.3f5e9df9.chunk.js.map": "/VESELKA/static/js/602.3f5e9df9.chunk.js.map",
     "787.38a4ba02.chunk.js.map": "/VESELKA/static/js/787.38a4ba02.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ef9329a5.css",
-    "static/js/main.7d8a1cb1.js"
+    "static/js/main.b9887708.js"
   ]
 }
