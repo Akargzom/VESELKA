@@ -157,16 +157,16 @@ button {
     .selects {
         width: 75%;
     }
+
+    .tab select {
+        font-size: 1.2em;
+    }
 }
 
 @media (max-width: 650px){
     .prog {
         margin-top: 10em;
         font-size: .5em;
-    }
-
-    .tab select {
-        font-size: 1.2em;
     }
 }
 
