@@ -89,7 +89,6 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
             <Route path="/prog-b" element={<Prog />} />
           </Routes>
         </Suspense>
-
       </div>
     );
   }
