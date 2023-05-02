@@ -75,8 +75,8 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
         {moment().isBefore('2024-15-01', 'day') && moment().isAfter('2023-20-12', 'day') ? <Snowfall /> : ''}
         <Suspense>
           <Routes>
-            <Route path="/*" element={<Navigate to="/isYurko-1" />} />
-            <Route path="/isYurko-1" element={<ModalDialog dialogs={dialogs.yurkoOne} />} />
+            <Route path="/*" element={<Navigate to="/VESELKA" />} />
+            <Route path="/VESELKA" element={<ModalDialog dialogs={dialogs.yurkoOne} />} />
             <Route path="/isYurko-2" element={<ModalDialog dialogs={dialogs.yurkoTwo} />} />
             <Route path="/isYurko-3" element={<ModalDialog dialogs={dialogs.yurkoThree} />} />
             <Route path="/isProg-1" element={<ModalDialog dialogs={dialogs.progOne} />} />
