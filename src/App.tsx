@@ -35,6 +35,14 @@ const Prog = React.lazy(() => import('./components/Prog-B/Prog')),
              icon: icon,
              native: true
            })
+         } else {
+          addNotification({
+            title: 'Прибуття на бе не очікується',
+            message: 'В останній раз ми були ' + kat,
+            duration: 120000,
+            icon: icon,
+            native: true
+          })
          }
        }
        )
