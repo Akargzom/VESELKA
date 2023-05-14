@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import moment from "moment"
 import 'moment-timezone'
-import classes from './Counter.module.css'
+import classes from './counter.module.css'
 import vector from '../../assets/Vector.png'
 import { AppDispatch, DateObj} from "../../types/types"
 import { useDispatch, useSelector } from "react-redux"
@@ -24,9 +24,8 @@ let Counter: React.FC = () => {
                     mode: mode,
                     date: RDate
                 },
-                count = (state.count + 1),
                 katMass = state.katMass.concat([dateObj])
-            dispatch(SetCounter(count, katMass) as ThunkType)
+            dispatch(SetCounter(katMass) as ThunkType)
         }
         useEffect(()=>{
             if(state.katMass.length){
@@ -39,7 +38,7 @@ let Counter: React.FC = () => {
         },[state.katMass])
     return (
         <div className={classes.wrap}>
-            <h1 className={classes.count}>{name} в останній раз була {state.count}</h1>
+            <h1 className={classes.count}>{name} в останній раз була {state.katMass.length && state.katMass.length}</h1>
             <div className={classes.date}>И це було: {date}</div>
             <div className={classes.buttons}>
                 <button className={classes.button + ' ' + classes.rainbow} onClick={() => addGame('R6')}>Додати веселку</button>

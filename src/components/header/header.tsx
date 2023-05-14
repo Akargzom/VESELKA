@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from './Header.module.css'
+import classes from './header.module.css'
 import { Link, useLocation } from "react-router-dom";
 const Out:React.FC = () => {
     let outStyle = { opacity: 0, visibility: 'hidden' },
